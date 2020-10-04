@@ -15,12 +15,22 @@ body {
 nav {
   margin: 0;
 }
-nav li {
+nav .nav-item {
   display: inline-block;
   margin: 0 10px;
+  background-color: blue;
+  border-radius: 8px;
+  padding: 0;
+  padding: 5px;
+  padding: 8px;
+  padding: 0;
 }
-nav li a {
+nav .nav-item a {
   cursor: pointer;
+  text-decoration: none;
+}
+nav :hover a {
+  color: pink;
 }
 
 footer {
