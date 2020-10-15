@@ -35,12 +35,16 @@ debugger;
         }
     }
 
-    let userSection = document.querySelector(".users-section");
-    let userTemplate = document.querySelector("#profs-template").content;
     
 
     //select our user element and load the content
     function handleDataSet(data) {
+
+        let myData = JSON.parse(data);
+        let userSection = document.querySelector(".users-section");
+        let userTemplate = document.querySelector("#user-template").content;
+    
+
 
         for (let user in myData) {
 
@@ -55,6 +59,7 @@ debugger;
         }
     }
 
-    handleDataSet(Team);
+    console.log(data);
+    // handleDataSet(Team);
     
 })();
