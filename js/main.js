@@ -1,65 +1,38 @@
 // import your packages here
-// import Team from "./modules/DataModule.js";
+import { fetchData } from "./modules/TheDataMiner.js";
 
 (() => {
     // stub * just a place for non-component-specific stuff
-
-    // set up the XMLHttp object
-    let myReq = new XMLHttpRequest;
-    myReq.addEventListener("readystatechange", handleRequest);
-
-    //open a request and pass thru the url of the data that we want
-    myReq.open('GET', '../DataSet.json');
-
-    //actually make the request
-    myReq.send();
-    //handleRequest function goes here
-    function handleRequest() {
-debugger;
-
-        if (myReq.readyState === XMLHttpRequest.DONE) {
-            debugger;
-            //check status here and proceed
-            if (myReq.status == 200) {
-                //200 means done and dusted, ready to go with the dataset!
-                handleDataSet(myReq.responseText);
-            } else {
-                //probably got some kind of error code, so handle that 
-                //a 404, 500 ...can render appropriate messages here
-                console.error(`${myReq.status} : something done broke, son`);
-            }
-        } else {
-            debugger;
-            //request isn't ready yet, keep waiting...
-            console.log(`Request state: ${myReq.readyState}. Still processing...`);
-        }
+    console.log('loaded');
+    
+    function popErrorBox(message) {
+        alert("Something has gone horribly, horribly wrong");
     }
 
-    
-
-    //select our user element and load the content
     function handleDataSet(data) {
+        let userSection = document.querySelector('.users-section'),
+            userTemplate = document.querySelector('#user-template').content;
 
-        let myData = JSON.parse(data);
-        let userSection = document.querySelector(".users-section");
-        let userTemplate = document.querySelector("#user-template").content;
-    
+        for (let user in data) {
+            let currentUser = userTemplate.cloneNode(true),
+                currentUserText = currentUser.querySelector('.user').children;
 
+            currentUserText[1].src = `images/${data[user].avatar}`;
+            currentUserText[2].textContent = data[user].name;
+            currentUserText[3].textContent = data[user].role;
+            currentUserText[4].textContent = data[user].nickname;
 
-        for (let user in myData) {
-
-            let currentUser = userTemplate.cloneNode(true);
-            let currentUserText = currentUser.querySelector('.user').children;
-
-            currentUserText[1].textContent = data[user].name;
-            currentUserText[2].textContent = data[user].role;
-            currentUserText[3].textContent = data[user].nickname;
-
+            // add this new user to the view
             userSection.appendChild(currentUser);
         }
     }
 
-    console.log(data);
-    // handleDataSet(Team);
     
+    // we can add a catch handler to a thenable if things go wrong during our data retrieval attempt
+    // really, we should move all of this to an external class or function and pass arguments into it.
+
+    // that would make it really flexible and able to handle all kinds of requests and we could pass in a callback depending on what we want to do with our data
+
+    // but then we'd be on our way to rewriting the Axios API (you should research it)
+    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
 })();
