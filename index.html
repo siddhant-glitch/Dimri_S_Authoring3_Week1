@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Teaching Team and a Bit About Them">
     <title>Working with SASS and Modules</title>
 
-     <!--this has to be a css file-->
-    <link rel="stylesheet" type="text/css" href="css/master.css">
+    <!-- this has to be a css file -->
+    <link rel="stylesheet" href="css/master.css">
 </head>
+
 <body>
     <main id="app">
-        <h1 class="hidden">welcome to my awesome app</h1>
-        <nav>
-            <li class="nav-item"><a href="#">item 1</a></li>
-            <li class="nav-item"><a href="#">item 2</a></li>
-            <li class="nav-item"><a href="#">item 3</a></li>
-            <li class="nav-item"><a href="#">item 4</a></li>
-            <li class="nav-item"><a href="#">item 5</a></li>
+        <h1 class="hidden">Welcome to my awesome app</h1>
+
+        <!-- this is an HTML component -->
+        <nav class="main-nav">
+            <ul>
+                <li class="nav-item">
+                    <a href="#" >item 1</a>
+                </li>
+
+                <li class="nav-item"><a href="#">item 2</a></li>
+                <li class="nav-item"><a href="#">item 3</a></li>
+                <li class="nav-item"><a href="#">item 4</a></li>
+                <li class="nav-item"><a href="#">item 5</a></li>
+            </ul>
         </nav>
-        <!--end component-->
+        <!-- end component -->
 
-        <!--add a user section-->
-        <section class="users-section">
-          <!--  <h1 class="hidden">our users</h1>
+        <!-- add a users section here -->
+        <section class="user-section">
+            <!-- <h1 class="hidden"></h1>
             <h2 class="user-name"></h2>
-            <p class="user-role"></p>
-            <p class="user-nickname"></p>    -->
+            <p class="user-nickname"></p>
+            <p class="user-role"></p> -->
         </section>
-
+        <!-- end users section -->
     </main>
 
-    <footer>this is a footer</footer>
+    <footer>this is a simple footer</footer>
 
-    <!--templates go here-->
+    <!-- template files here (these don't render) -->
     <template id="user-template">
         <div class="user">
             <h1 class="hidden"></h1>
-            <h2 class="user-name"></h2>
-            <p class="user-role"></p>
+            <img src="images/temp.jpg" alt="user image">
+            <!-- <h2 class="user-name"></h2>
             <p class="user-nickname"></p>
+            <p class="user-role"></p> -->
         </div>
     </template>
+    <!-- end templates -->
 
-
-
+    <!-- script files always go here -->
     <script type="module" src="js/main.js"></script>
 </body>
+
 </html>

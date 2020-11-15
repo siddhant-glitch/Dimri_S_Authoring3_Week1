@@ -1,3 +1,4 @@
+
 <?php 
     $db_dsn = array( 
         'host' => 'localhost',
@@ -10,13 +11,13 @@
     //This is the DB credentials
 
     $db_user = 'root';
-    $db_pass = '';
+    $db_pass = ''; // windows users leave this blank
 
     try{
         $pdo = new PDO($dsn, $db_user, $db_pass);
-        var_dump($pdo);
+        // var_dump($pdo);
         // echo (in this case) is almost like console.log
-        // echo 'you in the matrix now hehehe';
+        // echo "you're in! enjoy the show";
     } catch (PDOException $exception){
         echo 'Connection Error:'.$exception->getMessage();
         exit();
